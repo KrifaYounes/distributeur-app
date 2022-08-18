@@ -3,8 +3,26 @@
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 20vmin;
   pointer-events: none;
+}
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+
+.item {
+  margin: 20px;
+  height: 200px;
+  width: 200px;
+  background-color: #00AF87;
+  border-radius: 15px;
+  border: 2px solid #aeffed;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -20,7 +38,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-size: calc(8px + 2vmin);
   color: white;
 }
 

@@ -68,3 +68,5 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+https://smarthomepursuits.com/open-website-on-startup-with-raspberry-pi-os/#:~:text=To%20reboot%20your%20Raspberry%20Pi,smarthome%2C%20office%2C%20or%20garage.
