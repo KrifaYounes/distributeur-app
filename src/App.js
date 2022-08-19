@@ -4,6 +4,12 @@ import {useState} from "react";
 import un from './un.png';
 import deux from './deux.png';
 import trois from './trois.png';
+import citron from './citron.png';
+import fraise from './fraise.png';
+import orange from './orange.png';
+import kiwi from './kiwi.png';
+import banane from './banane.png';
+import samir from './samir.png';
 
 function App() {
     const [currentSaveur, setCurrentSaveur] = useState(null);
@@ -15,7 +21,8 @@ function App() {
     const [isLoading, setIsLoading] = useState(false);
     const [code, setCode] = useState(false);
     const saveurs = [1, 2, 3, 4, 5, 6];
-    const colors = ['#ffc107', '#f44336','#e91e63',  '#00bcd4', '#8bc34a', 'white'];
+    const colors = ['#ffdb72', '#f44336','#e9841e',  '#45c71c', '#8bc34a', 'white'];
+    const saveursPhoto = [citron, fraise,orange,kiwi,banane,fraise];
 
     const stopProgram = () => {
         const url = 'http://localhost:9000/stopAlert';
@@ -92,7 +99,7 @@ function App() {
                                         display: 'flex',
                                         color: 'WHITE'
                                     }}>
-                                        <span style={{fontSize: 18}}>Concentration faible</span><img src={un} style={{borderRadius: 5, marginLeft: 5}} width={30} height={50} alt="logo" />
+                                        <span style={{fontSize: 18}}>Concentration faible</span>
                                     </div>
                                     <div onClick={() => startProgram(saveur, 2)} style={{
                                         alignItems: 'center',
@@ -104,8 +111,7 @@ function App() {
                                         color: 'WHITE'
 
                                     }}>
-                                        <span style={{fontSize: 18}}>Concentration moyenne</span><img src={deux} style={{borderRadius: 5, marginLeft: 5}} width={30} height={50} alt="logo" />
-
+                                        <span style={{fontSize: 18}}>Concentration moyenne</span>
                                     </div>
                                     <div onClick={() => startProgram(saveur, 3)} style={{
                                         alignItems: 'center',
@@ -117,7 +123,7 @@ function App() {
                                         color: 'WHITE'
 
                                     }}>
-                                        <span style={{fontSize: 18}}>Concentration élévée</span><img src={trois} style={{borderRadius: 5, marginLeft: 5}} width={30} height={50} alt="logo" />
+                                        <span style={{fontSize: 18}}>Concentration élévée</span>
 
                                     </div>
                                 </div>
@@ -129,7 +135,7 @@ function App() {
                                 setCurrentSaveur(saveur);
                             }
                         }}>
-                            {saveur === 6 ? <>NETTOYAGE</> : <>SAVEUR {saveur}</>}</div>
+                            {saveur === 6 ? <img style={{borderRadius: 20}} src={samir} width={200} height={200}/>  : <><img src={saveursPhoto[saveur-1]} width={160} height={saveur === 4 || saveur === 5 ? 130 :160}/> </>}</div>
                     }))}
                 </div>
 
