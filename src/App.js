@@ -7,9 +7,9 @@ import trois from './trois.png';
 
 function App() {
     const [currentSaveur, setCurrentSaveur] = useState(null);
-    const [durationLevel1, setDurationLevel1] = useState(4000);
-    const [durationLevel2, setDurationLevel2] = useState(6000);
-    const [durationLevel3, setDurationLevel3] = useState(8000);
+    const [durationLevel1, setDurationLevel1] = useState(2000);
+    const [durationLevel2, setDurationLevel2] = useState(3000);
+    const [durationLevel3, setDurationLevel3] = useState(4000);
     const [showParam, setShowParam] = useState(false);
     const [durationNettoyage, setDurationNettoyage] = useState(10000);
     const [isLoading, setIsLoading] = useState(false);
@@ -91,7 +91,8 @@ function App() {
                                         justifyContent: 'center',
                                         display: 'flex',
                                         color: 'WHITE'
-                                    }}>Niveau 1<img src={un} style={{borderRadius: 5, marginLeft: 50}} width={30} height={50} alt="logo" />
+                                    }}>
+                                        <span style={{fontSize: 18}}>Concentration faible</span><img src={un} style={{borderRadius: 5, marginLeft: 5}} width={30} height={50} alt="logo" />
                                     </div>
                                     <div onClick={() => startProgram(saveur, 2)} style={{
                                         alignItems: 'center',
@@ -102,7 +103,8 @@ function App() {
                                         display: 'flex',
                                         color: 'WHITE'
 
-                                    }}>Niveau 2<img src={deux} style={{borderRadius: 5, marginLeft: 50}} width={30} height={50} alt="logo" />
+                                    }}>
+                                        <span style={{fontSize: 18}}>Concentration moyenne</span><img src={deux} style={{borderRadius: 5, marginLeft: 5}} width={30} height={50} alt="logo" />
 
                                     </div>
                                     <div onClick={() => startProgram(saveur, 3)} style={{
@@ -114,7 +116,9 @@ function App() {
                                         display: 'flex',
                                         color: 'WHITE'
 
-                                    }}>Niveau 3<img src={trois} style={{borderRadius: 5, marginLeft: 50}}  width={30} height={50} alt="logo" />
+                                    }}>
+                                        <span style={{fontSize: 18}}>Concentration élévée</span><img src={trois} style={{borderRadius: 5, marginLeft: 5}} width={30} height={50} alt="logo" />
+
                                     </div>
                                 </div>
                             </div>);
@@ -142,8 +146,8 @@ function App() {
                 }}>STOP
                 </div>
 
-                <div style={{marginTop:10}} onClick={() => setShowParam(!showParam)}>
-                    <span>Paramétres</span>
+                <div style={{marginTop:10}} >
+                    <span onClick={() => setShowParam(!showParam)}>Paramétres</span>
                     {showParam && <>
                         <div>Durée Niveau 1 <input name={"durationLevel1"} value={durationLevel1}
                                                    onChange={(e) => setDurationLevel1(e.target.value)}/></div>
