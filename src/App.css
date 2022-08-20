@@ -1,5 +1,6 @@
 .App {
-  text-align: center;
+  height: 100%;
+  margin: 0 auto;
 }
 
 .App-logo {
@@ -17,7 +18,7 @@
   height: 200px;
   width: 200px;
   background-color: #607d8b;
-  border-radius: 20px;
+  border-radius: 100px;
   border: 2px solid #aeffed;
   justify-content: center;
   align-items: center;
@@ -40,6 +41,9 @@
   justify-content: center;
   font-size: calc(8px + 2vmin);
   color: white;
+  background-image: url("./eau.png");
+  background-position: center ;
+  background-size: cover;
 }
 
 .App-link {

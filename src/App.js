@@ -10,6 +10,9 @@ import orange from './orange.png';
 import kiwi from './kiwi.png';
 import banane from './banane.png';
 import samir from './samir.png';
+import cassis from './cassis.png';
+import goutte from './goutte.png';
+import eau from './eau.png';
 
 function App() {
     const [currentSaveur, setCurrentSaveur] = useState(null);
@@ -17,12 +20,12 @@ function App() {
     const [durationLevel2, setDurationLevel2] = useState(3000);
     const [durationLevel3, setDurationLevel3] = useState(4000);
     const [showParam, setShowParam] = useState(false);
-    const [durationNettoyage, setDurationNettoyage] = useState(10000);
+    const [durationEau, setDurationEau] = useState(10000);
     const [isLoading, setIsLoading] = useState(false);
     const [code, setCode] = useState(false);
     const saveurs = [1, 2, 3, 4, 5, 6];
-    const colors = ['#ffdb72', '#f44336','#e9841e',  '#45c71c', '#8bc34a', 'white'];
-    const saveursPhoto = [citron, fraise,orange,kiwi,banane,fraise];
+    const colors = ['#ffdb72', '#f44336', '#e9841e', '#45c71c', '#8bc34a', 'white'];
+    const saveursPhoto = [citron, fraise, orange, kiwi, banane, cassis];
 
     const stopProgram = () => {
         const url = 'http://localhost:9000/stopAlert';
@@ -43,13 +46,13 @@ function App() {
             setIsLoading(true);
             let timems = durationLevel1;
             if (saveur === 6) {
-                timems = durationNettoyage;
+                timems = durationEau;
             } else if (level === 2) {
                 timems = durationLevel2;
             } else if (level === 3) {
                 timems = durationLevel3;
             }
-            const url = 'http://localhost:9000/command/' + saveur + '/' + timems;
+            const url = 'http://localhost:9000/command/' + saveur + '/' + timems + '/' + durationEau;
 
             fetch(url)
                 .then((response => {
@@ -64,17 +67,19 @@ function App() {
     }
 
     return (
-        <div className="App">
-            <header className="App-header">
+        <div className="App-header">
 
                 <div className="wrapper">
                     {saveurs.map((saveur => {
                         if (saveur === currentSaveur) {
                             if (isLoading) {
-                                return <div className="item" style={{boxShadow: '1px 2px 4px #4e4e4e', borderColor: colors[saveur-1]}}><img src={logo} className="App-logo" alt="logo"/></div>
+                                return <div className="item"
+                                            style={{boxShadow: '1px 2px 4px #4e4e4e', borderColor: colors[saveur - 1]}}>
+                                    <img src={logo} className="App-logo" alt="logo"/></div>
                             }
                             if (saveur === 6) {
-                                return <div className="item" style={{boxShadow: '1px 2px 4px #4e4e4e', borderColor: colors[saveur-1]}}>
+                                return <div className="item"
+                                            style={{boxShadow: '1px 2px 4px #4e4e4e', borderColor: colors[saveur - 1]}}>
                                     <div style={{flexDirection: 'column'}}>
                                         <input name={"code"} placeholder={"Entrer le code"}
                                                onChange={(e) => setCode(e.target.value)}/>
@@ -88,7 +93,8 @@ function App() {
                                     </div>
                                 </div>;
                             }
-                            return (<div className="item" style={{boxShadow: '1px 2px 4px #4e4e4e', borderColor: colors[saveur-1]}}>
+                            return (<div className="item"
+                                         style={{boxShadow: '1px 2px 4px #4e4e4e', borderColor: colors[saveur - 1]}}>
                                 <div style={{flexDirection: 'column'}}>
                                     <div onClick={() => startProgram(saveur, 1)} style={{
                                         alignItems: 'center',
@@ -99,8 +105,7 @@ function App() {
                                         display: 'flex',
                                         color: 'WHITE'
                                     }}>
-                                        <span style={{fontSize: 18}}>Concentration faible</span>
-                                    </div>
+                                        <span style={{fontSize: 18, fontWeight: 'bold'}}>Faible</span></div>
                                     <div onClick={() => startProgram(saveur, 2)} style={{
                                         alignItems: 'center',
                                         height: 66,
@@ -111,7 +116,7 @@ function App() {
                                         color: 'WHITE'
 
                                     }}>
-                                        <span style={{fontSize: 18}}>Concentration moyenne</span>
+                                        <span style={{fontSize: 18, fontWeight: 'bold'}}>Moyenne</span>
                                     </div>
                                     <div onClick={() => startProgram(saveur, 3)} style={{
                                         alignItems: 'center',
@@ -123,22 +128,26 @@ function App() {
                                         color: 'WHITE'
 
                                     }}>
-                                        <span style={{fontSize: 18}}>Concentration élévée</span>
+                                            <span style={{fontSize: 18}}>
+                                                <span style={{fontSize: 18, fontWeight: 'bold',}}>Forte</span>
+</span>
 
                                     </div>
                                 </div>
                             </div>);
                         }
-                        return <div className="item" style={{boxShadow: '1px 2px 4px black',
-                             borderColor: colors[saveur-1]}} onClick={() => {
+                        return <div className="item" style={{
+                            boxShadow: '1px 2px 4px black',
+                            borderColor: colors[saveur - 1]
+                        }} onClick={() => {
                             if (isLoading === false) {
                                 setCurrentSaveur(saveur);
                             }
                         }}>
-                            {saveur === 6 ? <img style={{borderRadius: 20}} src={samir} width={200} height={200}/>  : <><img src={saveursPhoto[saveur-1]} width={160} height={saveur === 4 || saveur === 5 ? 130 :160}/> </>}</div>
+                            {<><img src={saveursPhoto[saveur - 1]} width={100}
+                                    height={saveur === 4 || saveur === 5 ? 70 : 100}/> </>}</div>
                     }))}
                 </div>
-
 
                 <div onClick={() => stopProgram()} style={{
                     marginTop: 10,
@@ -152,7 +161,7 @@ function App() {
                 }}>STOP
                 </div>
 
-                <div style={{marginTop:10}} >
+                <div style={{marginTop: 10}}>
                     <span onClick={() => setShowParam(!showParam)}>Paramétres</span>
                     {showParam && <>
                         <div>Durée Niveau 1 <input name={"durationLevel1"} value={durationLevel1}
@@ -161,11 +170,11 @@ function App() {
                                                    onChange={(e) => setDurationLevel2(e.target.value)}/></div>
                         <div>Durée Niveau 3 <input name={"durationLevel3"} value={durationLevel3}
                                                    onChange={(e) => setDurationLevel3(e.target.value)}/></div>
-                        <div>Durée Nettoyage <input name={"durationnNettoyage"} value={durationNettoyage}
-                                                    onChange={(e) => setDurationNettoyage(e.target.value)}/></div>
+                        <div>Durée Eau <input name={"durationnNettoyage"} value={durationEau}
+                                                    onChange={(e) => setDurationEau(e.target.value)}/></div>
                     </>}
                 </div>
-            </header>
+
         </div>
     );
 }

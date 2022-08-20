@@ -36,7 +36,7 @@ GPIO.setup(PIN_EAU, GPIO.OUT)
 # initialize a flask object
 app = Flask(__name__)
 
-@app.route("/command/<int:saveur>/<int:timems>")
+@app.route("/command/<int:saveur>/<int:timems>/<int:timemseau>")
 def command_saveur(saveur, timems):
     if saveur == 1:
         GPIO.output(PIN_SAVEUR_1, GPIO.HIGH)
@@ -66,6 +66,11 @@ def command_saveur(saveur, timems):
         GPIO.output(PIN_SAVEUR_5, GPIO.LOW)
     if saveur == 6:
         GPIO.output(PIN_EAU, GPIO.LOW)
+
+    GPIO.output(PIN_EAU, GPIO.HIGH)
+    seconds= (timemseau/1000)%60
+    time.sleep(seconds)
+    GPIO.output(PIN_EAU, GPIO.LOW)
 
     return 'ok'
 
