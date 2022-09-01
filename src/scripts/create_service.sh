@@ -17,7 +17,7 @@ sudo echo 'Type=simple' >>serverpython.service
 sudo echo 'Restart=always' >>serverpython.service
 sudo echo 'RestartSec=1' >>serverpython.service
 sudo echo 'User=pi' >>serverpython.service
-sudo echo 'ExecStart=/home/pi/Documents/distributeur-app/scr/scripts/start_server_python.sh' >>serverpython.service
+sudo echo 'ExecStart=/home/pi/Documents/distributeur-app/src/scripts/start_server_python.sh' >>serverpython.service
 
 sudo echo '[Install]' >>serverpython.service
 sudo echo 'WantedBy=multi-user.target' >>serverpython.service
@@ -36,7 +36,7 @@ sudo echo 'Type=simple' >>servernode.service
 sudo echo 'Restart=always' >>servernode.service
 sudo echo 'RestartSec=1' >>servernode.service
 sudo echo 'User=pi' >>servernode.service
-sudo echo 'ExecStart=/home/pi/Documents/distributeur-app/scr/scripts/start_server_node.sh' >>servernode.service
+sudo echo 'ExecStart=/home/pi/Documents/distributeur-app/src/scripts/start_server_node.sh' >>servernode.service
 
 sudo echo '[Install]' >>servernode.service
 sudo echo 'WantedBy=multi-user.target' >>servernode.service

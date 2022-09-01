@@ -63,11 +63,7 @@ function App() {
     return (
         <div className="App-header">
 
-            <div style={{position: 'absolute', top: 75, color: '#03a9f4', fontWeight: 'bold'}}>
-                {currentSaveur === null && <>Sélectionner un parfum</>}
-                {currentSaveur !== null && <>Sélectionner une concentation</>}
 
-            </div>
             <div className="wrapper">
                 {saveurs.map((saveur => {
                     if (saveur === currentSaveur) {
@@ -83,12 +79,17 @@ function App() {
 
                         return (<div>
                             <div style={{flexDirection: 'column'}}>
+                                <div style={{color:'black',fontWeight:'bold', justifyContent:'center',display: 'flex',marginBottom: 15}}>
+                                    <span>Sélectionner une concentation</span>
+                                </div>
+
                                 <div onClick={() => startProgram(saveur, 1)} style={{
                                     alignItems: 'center',
                                     height: 66,
                                     width: '100%',
                                     justifyContent: 'center',
                                     display: 'flex',
+                                    backgroundColor: '#99f4ff'
                                 }}>
                                     <span style={{color: 'black',fontSize: 18, fontWeight: 'bold'}}>Faible</span></div>
                                 <div onClick={() => startProgram(saveur, 2)} style={{
@@ -97,6 +98,8 @@ function App() {
                                     width: '100%',
                                     justifyContent: 'center',
                                     display: 'flex',
+                                    backgroundColor: '#46efff'
+
                                 }}>
                                     <span style={{color: 'black',fontSize: 18, fontWeight: 'bold'}}>Moyenne</span>
                                 </div>
@@ -106,9 +109,10 @@ function App() {
                                     width: '100%',
                                     justifyContent: 'center',
                                     display: 'flex',
-                                }}>
-                                                <span style={{color: 'black',fontSize: 18, fontWeight: 'bold',}}>Forte</span>
+                                    backgroundColor: '#02e9ff'
 
+                                }}>
+                                    <span style={{color: 'black',fontSize: 18, fontWeight: 'bold',}}>Forte</span>
                                 </div>
                             </div>
                         </div>);

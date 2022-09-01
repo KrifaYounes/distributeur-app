@@ -4,7 +4,6 @@ import sys
 import signal
 import RPi.GPIO as GPIO
 from flask import Flask, request, Response, render_template
-from gpio import read_gpio
 import time
 import urllib.request
 import os
@@ -37,7 +36,7 @@ GPIO.setup(PIN_EAU, GPIO.OUT)
 app = Flask(__name__)
 
 @app.route("/command/<int:saveur>/<int:timems>/<int:timemseau>")
-def command_saveur(saveur, timems):
+def command_saveur(saveur, timems, timemseau):
     if saveur == 1:
         GPIO.output(PIN_SAVEUR_1, GPIO.HIGH)
     if saveur == 2:
